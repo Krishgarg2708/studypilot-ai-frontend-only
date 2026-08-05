@@ -1,0 +1,5 @@
+# This folder is for bundled static assets (custom logos, illustrations, etc.).
+# StudyPilot AI's UI currently uses lucide-react icons instead of custom image assets,
+# so there's nothing to bundle yet — this file just keeps the folder (and the intended
+# project structure) present in git. Drop image/SVG assets here and import them
+# directly in components as you add custom artwork.
