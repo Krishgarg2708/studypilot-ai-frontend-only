@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme — soft, warm neutrals with an indigo/violet accent */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 12%;
+
+    --primary: 252 83% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 12%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 262 83% 96%;
+    --accent-foreground: 252 60% 30%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 252 83% 60%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark theme — deep charcoal/navy with the same violet accent, tuned for glass panels */
+    --background: 240 10% 6%;
+    --foreground: 240 10% 96%;
+
+    --card: 240 10% 9%;
+    --card-foreground: 240 10% 96%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 240 10% 96%;
+
+    --primary: 252 83% 66%;
+    --primary-foreground: 240 10% 6%;
+
+    --secondary: 240 8% 14%;
+    --secondary-foreground: 240 10% 96%;
+
+    --muted: 240 8% 14%;
+    --muted-foreground: 240 5% 64%;
+
+    --accent: 252 40% 18%;
+    --accent-foreground: 252 90% 88%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 240 10% 6%;
+
+    --border: 240 8% 18%;
+    --input: 240 8% 18%;
+    --ring: 252 83% 66%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism panel — the floating-sidebar / glass-card aesthetic from the spec */
+  .glass-panel {
+    @apply bg-card/70 backdrop-blur-xl border border-border/60;
+  }
+
+  .glass-panel-strong {
+    @apply bg-card/90 backdrop-blur-2xl border border-border/80;
+  }
+
+  /* Subtle gradient mesh background used behind the main app shell */
+  .bg-mesh {
+    background-image: var(--tw-gradient-mesh, none);
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.08), transparent 50%),
+      radial-gradient(circle at top right, hsl(var(--accent) / 0.25), transparent 50%),
+      hsl(var(--background));
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 9999px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
