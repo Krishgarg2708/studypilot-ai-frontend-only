@@ -6,6 +6,11 @@ import axios, { type AxiosError, type InternalAxiosRequestConfig } from "axios"
 const ACCESS_TOKEN_KEY = "studypilot_access_token"
 const REFRESH_TOKEN_KEY = "studypilot_refresh_token"
 
+// Prototype mode: no real backend is deployed yet, so auth runs entirely against
+// a localStorage mock (see mock-auth.ts). Set VITE_API_URL in your environment
+// (e.g. Vercel project settings) once a real backend is live to switch this off.
+export const MOCK_MODE = !import.meta.env.VITE_API_URL
+
 export const tokenStorage = {
   getAccessToken: () => localStorage.getItem(ACCESS_TOKEN_KEY),
   getRefreshToken: () => localStorage.getItem(REFRESH_TOKEN_KEY),
@@ -20,7 +25,7 @@ export const tokenStorage = {
 }
 
 export const apiClient = axios.create({
-  baseURL: "/api",
+  baseURL: import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : "/api",
   headers: { "Content-Type": "application/json" },
 })
 
@@ -96,5 +101,12 @@ export function getApiErrorMessage(error: unknown): string {
     if (Array.isArray(detail) && detail[0]?.msg) return detail[0].msg
     return error.message
   }
+  // Mock-mode errors (see mock-auth.ts) mimic the same { response: { data: { detail } } } shape
+  // as an Axios error but aren't instances of AxiosError, so axios.isAxiosError() misses them.
+  if (error && typeof error === "object" && "response" in error) {
+    const detail = (error as { response?: { data?: { detail?: unknown } } }).response?.data?.detail
+    if (typeof detail === "string") return detail
+  }
+  if (error instanceof Error) return error.message
   return "An unexpected error occurred."
 }
