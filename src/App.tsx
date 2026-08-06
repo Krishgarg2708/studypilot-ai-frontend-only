@@ -20,7 +20,6 @@ import PomodoroPage from "@/pages/PomodoroPage"
 import AnalyticsPage from "@/pages/AnalyticsPage"
 import SettingsPage from "@/pages/SettingsPage"
 import SearchPage from "@/pages/SearchPage"
-
 function AppInit() {
   const { fetchCurrentUser, user } = useAuthStore()
 
