@@ -22,7 +22,6 @@ import SettingsPage from "@/pages/SettingsPage"
 import SearchPage from "@/pages/SearchPage"
 function AppInit() {
   const { fetchCurrentUser, user } = useAuthStore()
-
   useEffect(() => {
     fetchCurrentUser()
   }, [fetchCurrentUser])
