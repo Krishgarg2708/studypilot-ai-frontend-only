@@ -23,8 +23,6 @@ function AppInit() {
   useEffect(() => {
     fetchCurrentUser()
   }, [fetchCurrentUser])
-
-  // Apply persisted theme on startup
   useEffect(() => {
     if (user) {
       document.documentElement.classList.toggle("dark", user.theme === "dark")
