@@ -7,7 +7,6 @@ import { AppLayout } from "@/components/layout/AppLayout"
 import { useAuthStore } from "@/store/auth-store"
 import LoginPage from "@/pages/auth/LoginPage"
 import SignupPage from "@/pages/auth/SignupPage"
-// App p
 import DashboardPage from "@/pages/DashboardPage"
 import ChatPage from "@/pages/ChatPage"
 import DocumentsPage from "@/pages/DocumentsPage"
