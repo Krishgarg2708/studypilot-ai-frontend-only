@@ -36,7 +36,6 @@ function AppInit() {
 
   return null
 }
-
 export default function App() {
   return (
     <BrowserRouter>
