@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute"
 import { AppLayout } from "@/components/layout/AppLayout"
 import { useAuthStore } from "@/store/auth-store"
-// Auth pages
+// Auth pag
 import LoginPage from "@/pages/auth/LoginPage"
 import SignupPage from "@/pages/auth/SignupPage"
 // App pages
