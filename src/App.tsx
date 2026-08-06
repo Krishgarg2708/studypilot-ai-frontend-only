@@ -8,7 +8,6 @@ import { useAuthStore } from "@/store/auth-store"
 // Auth pages
 import LoginPage from "@/pages/auth/LoginPage"
 import SignupPage from "@/pages/auth/SignupPage"
-
 // App pages
 import DashboardPage from "@/pages/DashboardPage"
 import ChatPage from "@/pages/ChatPage"
